@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HOTELS" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tb_DONVI" EntityType="HOTELS.tb_DONVI" />
+    <EntitySet Name="tb_KHACHHANG" EntityType="HOTELS.tb_KHACHHANG" />
+    <EntitySet Name="tb_LOAIPHONG" EntityType="HOTELS.tb_LOAIPHONG" />
+    <EntitySet Name="tb_TANGLAU" EntityType="HOTELS.tb_TANGLAU" />
+    <EntitySet Name="tb_SANPHAM" EntityType="HOTELS.tb_SANPHAM" />
+    <EntitySet Name="tb_THIETBI" EntityType="HOTELS.tb_THIETBI" />
+    <EntitySet Name="tb_PARAM" EntityType="HOTELS.tb_PARAM" />
+    <EntitySet Name="tb_PHONG" EntityType="HOTELS.tb_PHONG" />
+    <EntitySet Name="tb_CONGTY" EntityType="HOTELS.tb_CONGTY" />
+    <AssociationSet Name="fk_PHONG_LOAIPHONG" Association="HOTELS.fk_PHONG_LOAIPHONG">
+      <End Role="tb_LOAIPHONG" EntitySet="tb_LOAIPHONG" />
+      <End Role="tb_PHONG" EntitySet="tb_PHONG" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tang_Phong" Association="HOTELS.fk_tang_Phong">
+      <End Role="tb_TANGLAU" EntitySet="tb_TANGLAU" />
+      <End Role="tb_PHONG" EntitySet="tb_PHONG" />
+    </AssociationSet>
+    <EntitySet Name="tb_DATPHONG" EntityType="HOTELS.tb_DATPHONG" />
+    <EntitySet Name="tb_DATPHONGCHITIET" EntityType="HOTELS.tb_DATPHONGCHITIET" />
+    <EntitySet Name="tb_DATPHONGSP" EntityType="HOTELS.tb_DATPHONGSP" />
+    <AssociationSet Name="fk_DPCT_DATPHONG" Association="HOTELS.fk_DPCT_DATPHONG">
+      <End Role="tb_DATPHONG" EntitySet="tb_DATPHONG" />
+      <End Role="tb_DATPHONGCHITIET" EntitySet="tb_DATPHONGCHITIET" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DPSP_DATPHONG" Association="HOTELS.fk_DPSP_DATPHONG">
+      <End Role="tb_DATPHONG" EntitySet="tb_DATPHONG" />
+      <End Role="tb_DATPHONGSP" EntitySet="tb_DATPHONGSP" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DPCT_PHONG" Association="HOTELS.fk_DPCT_PHONG">
+      <End Role="tb_PHONG" EntitySet="tb_PHONG" />
+      <End Role="tb_DATPHONGCHITIET" EntitySet="tb_DATPHONGCHITIET" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DATPHONGSP_PHONG" Association="HOTELS.fk_DATPHONGSP_PHONG">
+      <End Role="tb_PHONG" EntitySet="tb_PHONG" />
+      <End Role="tb_DATPHONGSP" EntitySet="tb_DATPHONGSP" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DPSP_SANPHAM" Association="HOTELS.fk_DPSP_SANPHAM">
+      <End Role="tb_SANPHAM" EntitySet="tb_SANPHAM" />
+      <End Role="tb_DATPHONGSP" EntitySet="tb_DATPHONGSP" />
+    </AssociationSet>
+    <EntitySet Name="tb_SYS_FUNCTION" EntityType="HOTELS.tb_SYS_FUNCTION" />
+    <EntitySet Name="tb_SYS_GROUP" EntityType="HOTELS.tb_SYS_GROUP" />
+    <EntitySet Name="tb_SYS_REPORT" EntityType="HOTELS.tb_SYS_REPORT" />
+    <EntitySet Name="tb_SYS_ROLE" EntityType="HOTELS.tb_SYS_ROLE" />
+    <EntitySet Name="tb_SYS_ROLE_REPORT" EntityType="HOTELS.tb_SYS_ROLE_REPORT" />
+    <EntitySet Name="tb_SYS_USERS" EntityType="HOTELS.tb_SYS_USERS" />
+    <EntitySet Name="tb_PHONGTB" EntityType="HOTELS.tb_PHONGTB" />
+    <EntitySet Name="VIEW_SYS_USER_NOTIN_GROUP" EntityType="HOTELS.VIEW_SYS_USER_NOTIN_GROUP" />
+    <EntitySet Name="VIEW_SYS_USER_IN_GROUP" EntityType="HOTELS.VIEW_SYS_USER_IN_GROUP" />
+    <EntitySet Name="VIEW_SYS_FUNCTION_ROLE" EntityType="HOTELS.VIEW_SYS_FUNCTION_ROLE" />
+    <FunctionImport Name="PHIEU_DATPHONG" ReturnType="Collection(HOTELS.PHIEU_DATPHONG_Result)">
+      <Parameter Name="IDDP" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="tb_DONVI">
+    <Key>
+      <PropertyRef Name="MADVI" />
+    </Key>
+    <Property Name="MADVI" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TENDVI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DIENTHOAI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FAX" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MACTY" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="DISABLED" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tb_KHACHHANG">
+    <Key>
+      <PropertyRef Name="IDKHACH" />
+    </Key>
+    <Property Name="IDKHACH" Type="Int32" Nullable="false" />
+    <Property Name="NAMEKHACH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CCCD" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="DIENTHOAI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="GIOITINH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="DISABLED" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tb_LOAIPHONG">
+    <Key>
+      <PropertyRef Name="IDLOAIPHONG" />
+    </Key>
+    <Property Name="IDLOAIPHONG" Type="Int32" Nullable="false" />
+    <Property Name="TENLOAIPHONG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DONGIA" Type="Double" />
+    <Property Name="SONGUOI" Type="Int32" />
+    <Property Name="SOGIUONG" Type="Int32" />
+    <Property Name="DISABLED" Type="Boolean" />
+    <NavigationProperty Name="tb_PHONG" Relationship="HOTELS.fk_PHONG_LOAIPHONG" FromRole="tb_LOAIPHONG" ToRole="tb_PHONG" />
+  </EntityType>
+  <EntityType Name="tb_TANGLAU">
+    <Key>
+      <PropertyRef Name="IDLAU" />
+    </Key>
+    <Property Name="IDLAU" Type="Int32" Nullable="false" />
+    <Property Name="TENLAU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DISABLED" Type="Boolean" />
+    <NavigationProperty Name="tb_PHONG" Relationship="HOTELS.fk_tang_Phong" FromRole="tb_TANGLAU" ToRole="tb_PHONG" />
+  </EntityType>
+  <EntityType Name="tb_SANPHAM">
+    <Key>
+      <PropertyRef Name="IDSP" />
+    </Key>
+    <Property Name="IDSP" Type="Int32" Nullable="false" />
+    <Property Name="TENSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DONGIA" Type="Double" />
+    <Property Name="DISABLED" Type="Boolean" />
+    <NavigationProperty Name="tb_DATPHONGSP" Relationship="HOTELS.fk_DPSP_SANPHAM" FromRole="tb_SANPHAM" ToRole="tb_DATPHONGSP" />
+  </EntityType>
+  <EntityType Name="tb_THIETBI">
+    <Key>
+      <PropertyRef Name="IDTHIETBI" />
+    </Key>
+    <Property Name="IDTHIETBI" Type="Int32" Nullable="false" />
+    <Property Name="TENTHIETBI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DONGIA" Type="Double" />
+    <Property Name="DISABLED" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tb_PARAM">
+    <Key>
+      <PropertyRef Name="MACTY" />
+      <PropertyRef Name="MADVI" />
+    </Key>
+    <Property Name="MACTY" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MADVI" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TENCTY" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TENDVI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tb_PHONG">
+    <Key>
+      <PropertyRef Name="IDPHONG" />
+    </Key>
+    <Property Name="IDPHONG" Type="Int32" Nullable="false" />
+    <Property Name="TENPHONG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TRANGTHAI" Type="Boolean" />
+    <Property Name="IDLAU" Type="Int32" Nullable="false" />
+    <Property Name="IDLOAIPHONG" Type="Int32" Nullable="false" />
+    <Property Name="DISABLED" Type="Boolean" />
+    <Property Name="TENLAU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TENLOAIPHONG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_LOAIPHONG" Relationship="HOTELS.fk_PHONG_LOAIPHONG" FromRole="tb_PHONG" ToRole="tb_LOAIPHONG" />
+    <NavigationProperty Name="tb_TANGLAU" Relationship="HOTELS.fk_tang_Phong" FromRole="tb_PHONG" ToRole="tb_TANGLAU" />
+    <NavigationProperty Name="tb_DATPHONGCHITIET" Relationship="HOTELS.fk_DPCT_PHONG" FromRole="tb_PHONG" ToRole="tb_DATPHONGCHITIET" />
+    <NavigationProperty Name="tb_DATPHONGSP" Relationship="HOTELS.fk_DATPHONGSP_PHONG" FromRole="tb_PHONG" ToRole="tb_DATPHONGSP" />
+  </EntityType>
+  <EntityType Name="tb_CONGTY">
+    <Key>
+      <PropertyRef Name="MACTY" />
+    </Key>
+    <Property Name="MACTY" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TENCTY" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DIENTHOAI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FAX" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DISABLED" Type="Boolean" />
+  </EntityType>
+  <Association Name="fk_PHONG_LOAIPHONG">
+    <End Type="HOTELS.tb_LOAIPHONG" Role="tb_LOAIPHONG" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="HOTELS.tb_PHONG" Role="tb_PHONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_LOAIPHONG">
+        <PropertyRef Name="IDLOAIPHONG" />
+      </Principal>
+      <Dependent Role="tb_PHONG">
+        <PropertyRef Name="IDLOAIPHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tang_Phong">
+    <End Type="HOTELS.tb_TANGLAU" Role="tb_TANGLAU" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="HOTELS.tb_PHONG" Role="tb_PHONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TANGLAU">
+        <PropertyRef Name="IDLAU" />
+      </Principal>
+      <Dependent Role="tb_PHONG">
+        <PropertyRef Name="IDLAU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tb_DATPHONG">
+    <Key>
+      <PropertyRef Name="IDDP" />
+    </Key>
+    <Property Name="IDDP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDKHACH" Type="Int32" Nullable="false" />
+    <Property Name="NGAYDAT" Type="DateTime" Precision="3" />
+    <Property Name="NGAYTRA" Type="DateTime" Precision="3" />
+    <Property Name="SOTIEN" Type="Double" />
+    <Property Name="SONGUOI" Type="Int32" />
+    <Property Name="IDUSER" Type="Int32" Nullable="false" />
+    <Property Name="MACTY" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MADVI" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TRANGTHAI" Type="Boolean" />
+    <Property Name="DOAN" Type="Boolean" />
+    <Property Name="GHICHU" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATE_BY" Type="Int32" />
+    <Property Name="DISABLED" Type="Boolean" />
+    <NavigationProperty Name="tb_DATPHONGCHITIET" Relationship="HOTELS.fk_DPCT_DATPHONG" FromRole="tb_DATPHONG" ToRole="tb_DATPHONGCHITIET" />
+    <NavigationProperty Name="tb_DATPHONGSP" Relationship="HOTELS.fk_DPSP_DATPHONG" FromRole="tb_DATPHONG" ToRole="tb_DATPHONGSP" />
+  </EntityType>
+  <EntityType Name="tb_DATPHONGCHITIET">
+    <Key>
+      <PropertyRef Name="IDDPCT" />
+    </Key>
+    <Property Name="IDDPCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDDP" Type="Int32" />
+    <Property Name="IDPHONG" Type="Int32" />
+    <Property Name="SONGAYO" Type="Int32" />
+    <Property Name="DONGIA" Type="Int32" />
+    <Property Name="THANHTIEN" Type="Double" />
+    <Property Name="NGAY" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tb_DATPHONG" Relationship="HOTELS.fk_DPCT_DATPHONG" FromRole="tb_DATPHONGCHITIET" ToRole="tb_DATPHONG" />
+    <NavigationProperty Name="tb_PHONG" Relationship="HOTELS.fk_DPCT_PHONG" FromRole="tb_DATPHONGCHITIET" ToRole="tb_PHONG" />
+  </EntityType>
+  <EntityType Name="tb_DATPHONGSP">
+    <Key>
+      <PropertyRef Name="IDDPSP" />
+    </Key>
+    <Property Name="IDDPSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDDP" Type="Int32" Nullable="false" />
+    <Property Name="IDDPCT" Type="Int32" />
+    <Property Name="IDPHONG" Type="Int32" />
+    <Property Name="IDSP" Type="Int32" />
+    <Property Name="NGAY" Type="DateTime" Precision="3" />
+    <Property Name="SOLUONG" Type="Int32" />
+    <Property Name="DONGIA" Type="Double" />
+    <Property Name="THANHTIEN" Type="Double" />
+    <NavigationProperty Name="tb_DATPHONG" Relationship="HOTELS.fk_DPSP_DATPHONG" FromRole="tb_DATPHONGSP" ToRole="tb_DATPHONG" />
+    <NavigationProperty Name="tb_PHONG" Relationship="HOTELS.fk_DATPHONGSP_PHONG" FromRole="tb_DATPHONGSP" ToRole="tb_PHONG" />
+    <NavigationProperty Name="tb_SANPHAM" Relationship="HOTELS.fk_DPSP_SANPHAM" FromRole="tb_DATPHONGSP" ToRole="tb_SANPHAM" />
+  </EntityType>
+  <Association Name="fk_DPCT_DATPHONG">
+    <End Type="HOTELS.tb_DATPHONG" Role="tb_DATPHONG" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="HOTELS.tb_DATPHONGCHITIET" Role="tb_DATPHONGCHITIET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_DATPHONG">
+        <PropertyRef Name="IDDP" />
+      </Principal>
+      <Dependent Role="tb_DATPHONGCHITIET">
+        <PropertyRef Name="IDDP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DPSP_DATPHONG">
+    <End Type="HOTELS.tb_DATPHONG" Role="tb_DATPHONG" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="HOTELS.tb_DATPHONGSP" Role="tb_DATPHONGSP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_DATPHONG">
+        <PropertyRef Name="IDDP" />
+      </Principal>
+      <Dependent Role="tb_DATPHONGSP">
+        <PropertyRef Name="IDDP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DPCT_PHONG">
+    <End Type="HOTELS.tb_PHONG" Role="tb_PHONG" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="HOTELS.tb_DATPHONGCHITIET" Role="tb_DATPHONGCHITIET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PHONG">
+        <PropertyRef Name="IDPHONG" />
+      </Principal>
+      <Dependent Role="tb_DATPHONGCHITIET">
+        <PropertyRef Name="IDPHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DATPHONGSP_PHONG">
+    <End Type="HOTELS.tb_PHONG" Role="tb_PHONG" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="HOTELS.tb_DATPHONGSP" Role="tb_DATPHONGSP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PHONG">
+        <PropertyRef Name="IDPHONG" />
+      </Principal>
+      <Dependent Role="tb_DATPHONGSP">
+        <PropertyRef Name="IDPHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DPSP_SANPHAM">
+    <End Type="HOTELS.tb_SANPHAM" Role="tb_SANPHAM" Multiplicity="0..1" />
+    <End Type="HOTELS.tb_DATPHONGSP" Role="tb_DATPHONGSP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_SANPHAM">
+        <PropertyRef Name="IDSP" />
+      </Principal>
+      <Dependent Role="tb_DATPHONGSP">
+        <PropertyRef Name="IDSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tb_SYS_FUNCTION">
+    <Key>
+      <PropertyRef Name="FUNC_CODE" />
+      <PropertyRef Name="SORT" />
+    </Key>
+    <Property Name="FUNC_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SORT" Type="Int32" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ISGROUP" Type="Boolean" />
+    <Property Name="PARENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MENU" Type="Boolean" />
+    <Property Name="TIPS" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tb_SYS_GROUP">
+    <Key>
+      <PropertyRef Name="GROUP" />
+      <PropertyRef Name="MEMBER" />
+    </Key>
+    <Property Name="GROUP" Type="Int32" Nullable="false" />
+    <Property Name="MEMBER" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_SYS_REPORT">
+    <Key>
+      <PropertyRef Name="REPORT_CODE" />
+    </Key>
+    <Property Name="REPORT_CODE" Type="Int32" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="REPORT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VISIBLED" Type="Boolean" />
+    <Property Name="REPORT_DATETIME" Type="Boolean" />
+    <Property Name="DATETIME" Type="Boolean" />
+    <Property Name="MACTY" Type="Boolean" />
+    <Property Name="MADVI" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tb_SYS_ROLE">
+    <Key>
+      <PropertyRef Name="FUNC_CODE" />
+      <PropertyRef Name="IDUSER" />
+    </Key>
+    <Property Name="FUNC_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDUSER" Type="Int32" Nullable="false" />
+    <Property Name="USER_ROLE" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tb_SYS_ROLE_REPORT">
+    <Key>
+      <PropertyRef Name="REPORT_CODE" />
+      <PropertyRef Name="IDUSER" />
+    </Key>
+    <Property Name="REPORT_CODE" Type="Int32" Nullable="false" />
+    <Property Name="IDUSER" Type="Int32" Nullable="false" />
+    <Property Name="USER_ROLE" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tb_SYS_USERS">
+    <Key>
+      <PropertyRef Name="IDUSER" />
+    </Key>
+    <Property Name="IDUSER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FULLNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MACTY" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MADVI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ISGROUP" Type="Boolean" />
+    <Property Name="DISABLED" Type="Boolean" />
+    <Property Name="LAST_PWD_CHANGED" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tb_PHONGTB">
+    <Key>
+      <PropertyRef Name="IDPHONG" />
+    </Key>
+    <Property Name="IDPHONG" Type="Int32" Nullable="false" />
+    <Property Name="IDTHIETBI" Type="Int32" Nullable="false" />
+    <Property Name="SOLUONG" Type="Int32" />
+    <Property Name="DISABLED" Type="Boolean" />
+    <Property Name="TENPHONG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TENTHIETBI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="VIEW_SYS_USER_NOTIN_GROUP">
+    <Key>
+      <PropertyRef Name="IDUSER" />
+      <PropertyRef Name="MACTY" />
+      <PropertyRef Name="MADVI" />
+    </Key>
+    <Property Name="IDUSER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FULLNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MACTY" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MADVI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ISGROUP" Type="Boolean" />
+    <Property Name="DISABLED" Type="Boolean" />
+    <Property Name="LAST_PWD_CHANGED" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VIEW_SYS_USER_IN_GROUP">
+    <Key>
+      <PropertyRef Name="GROUP" />
+      <PropertyRef Name="MEMBER" />
+    </Key>
+    <Property Name="IDUSER" Type="Int32" />
+    <Property Name="FULLNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MACTY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MADVI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ISGROUP" Type="Boolean" />
+    <Property Name="DISABLED" Type="Boolean" />
+    <Property Name="LAST_PWD_CHANGED" Type="DateTime" Precision="3" />
+    <Property Name="GROUP" Type="Int32" Nullable="false" />
+    <Property Name="MEMBER" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VIEW_SYS_FUNCTION_ROLE">
+    <Key>
+      <PropertyRef Name="FUNC_CODE" />
+      <PropertyRef Name="SORT" />
+      <PropertyRef Name="IDUSER" />
+    </Key>
+    <Property Name="FUNC_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ISGROUP" Type="Boolean" />
+    <Property Name="PARENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SORT" Type="Int32" Nullable="false" />
+    <Property Name="IDUSER" Type="Int32" Nullable="false" />
+    <Property Name="ROLE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="PHIEU_DATPHONG_Result">
+    <Property Type="Int32" Name="IDDP" Nullable="false" />
+    <Property Type="Int32" Name="IDKHACH" Nullable="false" />
+    <Property Type="String" Name="NAMEKHACH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DIENTHOAI" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="DIACHI" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="NGAYDAT" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="NGAYTRA" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="SOTIEN" Nullable="true" />
+    <Property Type="Int32" Name="SONGUOI" Nullable="true" />
+    <Property Type="String" Name="MACTY" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="MADVI" Nullable="false" MaxLength="10" />
+    <Property Type="Boolean" Name="TRANGTHAI" Nullable="true" />
+    <Property Type="String" Name="GHICHU" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="IDPHONG" Nullable="true" />
+    <Property Type="String" Name="TENPHONG" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SONGAYO" Nullable="true" />
+    <Property Type="Int32" Name="DP_DONGIA" Nullable="true" />
+    <Property Type="Double" Name="DP_THANHTIEN" Nullable="true" />
+    <Property Type="Int32" Name="IDSP" Nullable="true" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SP_SOLUONG" Nullable="true" />
+    <Property Type="Double" Name="SP_DONGIA" Nullable="true" />
+    <Property Type="Double" Name="SP_THANHTIEN" Nullable="true" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HOTELS.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tb_CONGTY">
+    <Key>
+      <PropertyRef Name="MACTY" />
+    </Key>
+    <Property Name="MACTY" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TENCTY" Type="nvarchar" MaxLength="200" />
+    <Property Name="DIENTHOAI" Type="nvarchar" MaxLength="10" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+    <Property Name="FAX" Type="nvarchar" MaxLength="10" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="500" />
+    <Property Name="DISABLED" Type="bit" />
+  </EntityType>
+  <EntityType Name="tb_DATPHONG">
+    <Key>
+      <PropertyRef Name="IDDP" />
+    </Key>
+    <Property Name="IDDP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDKHACH" Type="int" Nullable="false" />
+    <Property Name="NGAYDAT" Type="datetime" />
+    <Property Name="NGAYTRA" Type="datetime" />
+    <Property Name="SOTIEN" Type="float" />
+    <Property Name="SONGUOI" Type="int" />
+    <Property Name="IDUSER" Type="int" Nullable="false" />
+    <Property Name="MACTY" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MADVI" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANGTHAI" Type="bit" />
+    <Property Name="DOAN" Type="bit" />
+    <Property Name="GHICHU" Type="nvarchar" MaxLength="200" />
+    <Property Name="CREATED_DATE" Type="datetime" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_BY" Type="int" />
+    <Property Name="DISABLED" Type="bit" />
+  </EntityType>
+  <EntityType Name="tb_DATPHONGCHITIET">
+    <Key>
+      <PropertyRef Name="IDDPCT" />
+    </Key>
+    <Property Name="IDDPCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDDP" Type="int" />
+    <Property Name="IDPHONG" Type="int" />
+    <Property Name="SONGAYO" Type="int" />
+    <Property Name="DONGIA" Type="int" />
+    <Property Name="THANHTIEN" Type="float" />
+    <Property Name="NGAY" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tb_DATPHONGSP">
+    <Key>
+      <PropertyRef Name="IDDPSP" />
+    </Key>
+    <Property Name="IDDPSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDDP" Type="int" Nullable="false" />
+    <Property Name="IDDPCT" Type="int" />
+    <Property Name="IDPHONG" Type="int" />
+    <Property Name="IDSP" Type="int" />
+    <Property Name="NGAY" Type="datetime" />
+    <Property Name="SOLUONG" Type="int" />
+    <Property Name="DONGIA" Type="float" />
+    <Property Name="THANHTIEN" Type="float" />
+  </EntityType>
+  <EntityType Name="tb_DONVI">
+    <Key>
+      <PropertyRef Name="MADVI" />
+    </Key>
+    <Property Name="MADVI" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TENDVI" Type="nvarchar" MaxLength="200" />
+    <Property Name="DIENTHOAI" Type="nvarchar" MaxLength="10" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+    <Property Name="FAX" Type="nvarchar" MaxLength="10" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="500" />
+    <Property Name="MACTY" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DISABLED" Type="bit" />
+  </EntityType>
+  <EntityType Name="tb_KHACHHANG">
+    <Key>
+      <PropertyRef Name="IDKHACH" />
+    </Key>
+    <Property Name="IDKHACH" Type="int" Nullable="false" />
+    <Property Name="NAMEKHACH" Type="nvarchar" MaxLength="50" />
+    <Property Name="CCCD" Type="nvarchar" MaxLength="12" />
+    <Property Name="DIENTHOAI" Type="nvarchar" MaxLength="10" />
+    <Property Name="EMAIl" Type="nvarchar" MaxLength="50" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="500" />
+    <Property Name="GIOITINH" Type="nvarchar" MaxLength="10" />
+    <Property Name="DISABLED" Type="bit" />
+  </EntityType>
+  <EntityType Name="tb_LOAIPHONG">
+    <Key>
+      <PropertyRef Name="IDLOAIPHONG" />
+    </Key>
+    <Property Name="IDLOAIPHONG" Type="int" Nullable="false" />
+    <Property Name="TENLOAIPHONG" Type="nvarchar" MaxLength="50" />
+    <Property Name="DONGIA" Type="float" />
+    <Property Name="SONGUOI" Type="int" />
+    <Property Name="SOGIUONG" Type="int" />
+    <Property Name="DISABLED" Type="bit" />
+  </EntityType>
+  <EntityType Name="tb_PARAM">
+    <Key>
+      <PropertyRef Name="MACTY" />
+      <PropertyRef Name="MADVI" />
+    </Key>
+    <Property Name="MACTY" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MADVI" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TENCTY" Type="nvarchar" MaxLength="200" />
+    <Property Name="TENDVI" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tb_PHONG">
+    <Key>
+      <PropertyRef Name="IDPHONG" />
+    </Key>
+    <Property Name="IDPHONG" Type="int" Nullable="false" />
+    <Property Name="TENPHONG" Type="nvarchar" MaxLength="50" />
+    <Property Name="TRANGTHAI" Type="bit" />
+    <Property Name="IDLAU" Type="int" Nullable="false" />
+    <Property Name="IDLOAIPHONG" Type="int" Nullable="false" />
+    <Property Name="DISABLED" Type="bit" />
+    <Property Name="TENLAU" Type="nvarchar" MaxLength="50" />
+    <Property Name="TENLOAIPHONG" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tb_PHONGTB">
+    <Key>
+      <PropertyRef Name="IDPHONG" />
+    </Key>
+    <Property Name="IDPHONG" Type="int" Nullable="false" />
+    <Property Name="IDTHIETBI" Type="int" Nullable="false" />
+    <Property Name="SOLUONG" Type="int" />
+    <Property Name="DISABLED" Type="bit" />
+    <Property Name="TENPHONG" Type="nvarchar" MaxLength="50" />
+    <Property Name="TENTHIETBI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tb_SANPHAM">
+    <Key>
+      <PropertyRef Name="IDSP" />
+    </Key>
+    <Property Name="IDSP" Type="int" Nullable="false" />
+    <Property Name="TENSP" Type="nvarchar" MaxLength="50" />
+    <Property Name="DONGIA" Type="float" />
+    <Property Name="DISABLED" Type="bit" />
+  </EntityType>
+  <EntityType Name="tb_SYS_FUNCTION">
+    <Key>
+      <PropertyRef Name="FUNC_CODE" />
+      <PropertyRef Name="SORT" />
+    </Key>
+    <Property Name="FUNC_CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SORT" Type="int" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="200" />
+    <Property Name="ISGROUP" Type="bit" />
+    <Property Name="PARENT" Type="nvarchar" MaxLength="50" />
+    <Property Name="MENU" Type="bit" />
+    <Property Name="TIPS" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tb_SYS_GROUP">
+    <Key>
+      <PropertyRef Name="GROUP" />
+      <PropertyRef Name="MEMBER" />
+    </Key>
+    <Property Name="GROUP" Type="int" Nullable="false" />
+    <Property Name="MEMBER" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_SYS_REPORT">
+    <Key>
+      <PropertyRef Name="REPORT_CODE" />
+    </Key>
+    <Property Name="REPORT_CODE" Type="int" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" />
+    <Property Name="REPORT_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="VISIBLED" Type="bit" />
+    <Property Name="REPORT_DATETIME" Type="bit" />
+    <Property Name="DATETIME" Type="bit" />
+    <Property Name="MACTY" Type="bit" />
+    <Property Name="MADVI" Type="bit" />
+  </EntityType>
+  <EntityType Name="tb_SYS_ROLE">
+    <Key>
+      <PropertyRef Name="FUNC_CODE" />
+      <PropertyRef Name="IDUSER" />
+    </Key>
+    <Property Name="FUNC_CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IDUSER" Type="int" Nullable="false" />
+    <Property Name="USER_ROLE" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_SYS_ROLE_REPORT">
+    <Key>
+      <PropertyRef Name="REPORT_CODE" />
+      <PropertyRef Name="IDUSER" />
+    </Key>
+    <Property Name="REPORT_CODE" Type="int" Nullable="false" />
+    <Property Name="IDUSER" Type="int" Nullable="false" />
+    <Property Name="USER_ROLE" Type="bit" />
+  </EntityType>
+  <EntityType Name="tb_SYS_USERS">
+    <Key>
+      <PropertyRef Name="IDUSER" />
+    </Key>
+    <Property Name="IDUSER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FULLNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="PASSWD" Type="nvarchar" MaxLength="50" />
+    <Property Name="MACTY" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MADVI" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ISGROUP" Type="bit" />
+    <Property Name="DISABLED" Type="bit" />
+    <Property Name="LAST_PWD_CHANGED" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tb_TANGLAU">
+    <Key>
+      <PropertyRef Name="IDLAU" />
+    </Key>
+    <Property Name="IDLAU" Type="int" Nullable="false" />
+    <Property Name="TENLAU" Type="nvarchar" MaxLength="50" />
+    <Property Name="DISABLED" Type="bit" />
+  </EntityType>
+  <EntityType Name="tb_THIETBI">
+    <Key>
+      <PropertyRef Name="IDTHIETBI" />
+    </Key>
+    <Property Name="IDTHIETBI" Type="int" Nullable="false" />
+    <Property Name="TENTHIETBI" Type="nvarchar" MaxLength="50" />
+    <Property Name="DONGIA" Type="float" />
+    <Property Name="DISABLED" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HOTELS.dbo.VIEW_SYS_FUNCTION_ROLE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VIEW_SYS_FUNCTION_ROLE">
+    <Key>
+      <PropertyRef Name="FUNC_CODE" />
+      <PropertyRef Name="SORT" />
+      <PropertyRef Name="IDUSER" />
+    </Key>
+    <Property Name="FUNC_CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="200" />
+    <Property Name="ISGROUP" Type="bit" />
+    <Property Name="PARENT" Type="nvarchar" MaxLength="50" />
+    <Property Name="SORT" Type="int" Nullable="false" />
+    <Property Name="IDUSER" Type="int" Nullable="false" />
+    <Property Name="ROLE" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HOTELS.dbo.VIEW_SYS_USER_IN_GROUP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VIEW_SYS_USER_IN_GROUP">
+    <Key>
+      <PropertyRef Name="GROUP" />
+      <PropertyRef Name="MEMBER" />
+    </Key>
+    <Property Name="IDUSER" Type="int" />
+    <Property Name="FULLNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="PASSWD" Type="nvarchar" MaxLength="50" />
+    <Property Name="MACTY" Type="nvarchar" MaxLength="50" />
+    <Property Name="MADVI" Type="nvarchar" MaxLength="50" />
+    <Property Name="ISGROUP" Type="bit" />
+    <Property Name="DISABLED" Type="bit" />
+    <Property Name="LAST_PWD_CHANGED" Type="datetime" />
+    <Property Name="GROUP" Type="int" Nullable="false" />
+    <Property Name="MEMBER" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HOTELS.dbo.VIEW_SYS_USER_NOTIN_GROUP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VIEW_SYS_USER_NOTIN_GROUP">
+    <Key>
+      <PropertyRef Name="IDUSER" />
+      <PropertyRef Name="MACTY" />
+      <PropertyRef Name="MADVI" />
+    </Key>
+    <Property Name="IDUSER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FULLNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="PASSWD" Type="nvarchar" MaxLength="50" />
+    <Property Name="MACTY" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MADVI" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ISGROUP" Type="bit" />
+    <Property Name="DISABLED" Type="bit" />
+    <Property Name="LAST_PWD_CHANGED" Type="datetime" />
+  </EntityType>
+  <Association Name="fk_DATPHONGSP_PHONG">
+    <End Role="tb_PHONG" Type="Self.tb_PHONG" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tb_DATPHONGSP" Type="Self.tb_DATPHONGSP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PHONG">
+        <PropertyRef Name="IDPHONG" />
+      </Principal>
+      <Dependent Role="tb_DATPHONGSP">
+        <PropertyRef Name="IDPHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DPCT_DATPHONG">
+    <End Role="tb_DATPHONG" Type="Self.tb_DATPHONG" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tb_DATPHONGCHITIET" Type="Self.tb_DATPHONGCHITIET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_DATPHONG">
+        <PropertyRef Name="IDDP" />
+      </Principal>
+      <Dependent Role="tb_DATPHONGCHITIET">
+        <PropertyRef Name="IDDP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DPCT_PHONG">
+    <End Role="tb_PHONG" Type="Self.tb_PHONG" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tb_DATPHONGCHITIET" Type="Self.tb_DATPHONGCHITIET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PHONG">
+        <PropertyRef Name="IDPHONG" />
+      </Principal>
+      <Dependent Role="tb_DATPHONGCHITIET">
+        <PropertyRef Name="IDPHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DPSP_DATPHONG">
+    <End Role="tb_DATPHONG" Type="Self.tb_DATPHONG" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tb_DATPHONGSP" Type="Self.tb_DATPHONGSP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_DATPHONG">
+        <PropertyRef Name="IDDP" />
+      </Principal>
+      <Dependent Role="tb_DATPHONGSP">
+        <PropertyRef Name="IDDP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DPSP_SANPHAM">
+    <End Role="tb_SANPHAM" Type="Self.tb_SANPHAM" Multiplicity="0..1" />
+    <End Role="tb_DATPHONGSP" Type="Self.tb_DATPHONGSP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_SANPHAM">
+        <PropertyRef Name="IDSP" />
+      </Principal>
+      <Dependent Role="tb_DATPHONGSP">
+        <PropertyRef Name="IDSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PHONG_LOAIPHONG">
+    <End Role="tb_LOAIPHONG" Type="Self.tb_LOAIPHONG" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tb_PHONG" Type="Self.tb_PHONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_LOAIPHONG">
+        <PropertyRef Name="IDLOAIPHONG" />
+      </Principal>
+      <Dependent Role="tb_PHONG">
+        <PropertyRef Name="IDLOAIPHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tang_Phong">
+    <End Role="tb_TANGLAU" Type="Self.tb_TANGLAU" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tb_PHONG" Type="Self.tb_PHONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TANGLAU">
+        <PropertyRef Name="IDLAU" />
+      </Principal>
+      <Dependent Role="tb_PHONG">
+        <PropertyRef Name="IDLAU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="PHIEU_DATPHONG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDDP" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="HOTELSStoreContainer">
+    <EntitySet Name="tb_CONGTY" EntityType="Self.tb_CONGTY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_DATPHONG" EntityType="Self.tb_DATPHONG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_DATPHONGCHITIET" EntityType="Self.tb_DATPHONGCHITIET" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_DATPHONGSP" EntityType="Self.tb_DATPHONGSP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_DONVI" EntityType="Self.tb_DONVI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_KHACHHANG" EntityType="Self.tb_KHACHHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_LOAIPHONG" EntityType="Self.tb_LOAIPHONG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PARAM" EntityType="Self.tb_PARAM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PHONG" EntityType="Self.tb_PHONG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PHONGTB" EntityType="Self.tb_PHONGTB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_SANPHAM" EntityType="Self.tb_SANPHAM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_SYS_FUNCTION" EntityType="Self.tb_SYS_FUNCTION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_SYS_GROUP" EntityType="Self.tb_SYS_GROUP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_SYS_REPORT" EntityType="Self.tb_SYS_REPORT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_SYS_ROLE" EntityType="Self.tb_SYS_ROLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_SYS_ROLE_REPORT" EntityType="Self.tb_SYS_ROLE_REPORT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_SYS_USERS" EntityType="Self.tb_SYS_USERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_TANGLAU" EntityType="Self.tb_TANGLAU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_THIETBI" EntityType="Self.tb_THIETBI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VIEW_SYS_FUNCTION_ROLE" EntityType="Self.VIEW_SYS_FUNCTION_ROLE" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_SYS_FUNCTION_ROLE].[FUNC_CODE] AS [FUNC_CODE], 
+    [VIEW_SYS_FUNCTION_ROLE].[DESCRIPTION] AS [DESCRIPTION], 
+    [VIEW_SYS_FUNCTION_ROLE].[ISGROUP] AS [ISGROUP], 
+    [VIEW_SYS_FUNCTION_ROLE].[PARENT] AS [PARENT], 
+    [VIEW_SYS_FUNCTION_ROLE].[SORT] AS [SORT], 
+    [VIEW_SYS_FUNCTION_ROLE].[IDUSER] AS [IDUSER], 
+    [VIEW_SYS_FUNCTION_ROLE].[ROLE] AS [ROLE]
+    FROM [dbo].[VIEW_SYS_FUNCTION_ROLE] AS [VIEW_SYS_FUNCTION_ROLE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_SYS_USER_IN_GROUP" EntityType="Self.VIEW_SYS_USER_IN_GROUP" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_SYS_USER_IN_GROUP].[IDUSER] AS [IDUSER], 
+    [VIEW_SYS_USER_IN_GROUP].[FULLNAME] AS [FULLNAME], 
+    [VIEW_SYS_USER_IN_GROUP].[USERNAME] AS [USERNAME], 
+    [VIEW_SYS_USER_IN_GROUP].[PASSWD] AS [PASSWD], 
+    [VIEW_SYS_USER_IN_GROUP].[MACTY] AS [MACTY], 
+    [VIEW_SYS_USER_IN_GROUP].[MADVI] AS [MADVI], 
+    [VIEW_SYS_USER_IN_GROUP].[ISGROUP] AS [ISGROUP], 
+    [VIEW_SYS_USER_IN_GROUP].[DISABLED] AS [DISABLED], 
+    [VIEW_SYS_USER_IN_GROUP].[LAST_PWD_CHANGED] AS [LAST_PWD_CHANGED], 
+    [VIEW_SYS_USER_IN_GROUP].[GROUP] AS [GROUP], 
+    [VIEW_SYS_USER_IN_GROUP].[MEMBER] AS [MEMBER]
+    FROM [dbo].[VIEW_SYS_USER_IN_GROUP] AS [VIEW_SYS_USER_IN_GROUP]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_SYS_USER_NOTIN_GROUP" EntityType="Self.VIEW_SYS_USER_NOTIN_GROUP" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_SYS_USER_NOTIN_GROUP].[IDUSER] AS [IDUSER], 
+    [VIEW_SYS_USER_NOTIN_GROUP].[FULLNAME] AS [FULLNAME], 
+    [VIEW_SYS_USER_NOTIN_GROUP].[USERNAME] AS [USERNAME], 
+    [VIEW_SYS_USER_NOTIN_GROUP].[PASSWD] AS [PASSWD], 
+    [VIEW_SYS_USER_NOTIN_GROUP].[MACTY] AS [MACTY], 
+    [VIEW_SYS_USER_NOTIN_GROUP].[MADVI] AS [MADVI], 
+    [VIEW_SYS_USER_NOTIN_GROUP].[ISGROUP] AS [ISGROUP], 
+    [VIEW_SYS_USER_NOTIN_GROUP].[DISABLED] AS [DISABLED], 
+    [VIEW_SYS_USER_NOTIN_GROUP].[LAST_PWD_CHANGED] AS [LAST_PWD_CHANGED]
+    FROM [dbo].[VIEW_SYS_USER_NOTIN_GROUP] AS [VIEW_SYS_USER_NOTIN_GROUP]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="fk_DATPHONGSP_PHONG" Association="Self.fk_DATPHONGSP_PHONG">
+      <End Role="tb_PHONG" EntitySet="tb_PHONG" />
+      <End Role="tb_DATPHONGSP" EntitySet="tb_DATPHONGSP" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DPCT_DATPHONG" Association="Self.fk_DPCT_DATPHONG">
+      <End Role="tb_DATPHONG" EntitySet="tb_DATPHONG" />
+      <End Role="tb_DATPHONGCHITIET" EntitySet="tb_DATPHONGCHITIET" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DPCT_PHONG" Association="Self.fk_DPCT_PHONG">
+      <End Role="tb_PHONG" EntitySet="tb_PHONG" />
+      <End Role="tb_DATPHONGCHITIET" EntitySet="tb_DATPHONGCHITIET" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DPSP_DATPHONG" Association="Self.fk_DPSP_DATPHONG">
+      <End Role="tb_DATPHONG" EntitySet="tb_DATPHONG" />
+      <End Role="tb_DATPHONGSP" EntitySet="tb_DATPHONGSP" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DPSP_SANPHAM" Association="Self.fk_DPSP_SANPHAM">
+      <End Role="tb_SANPHAM" EntitySet="tb_SANPHAM" />
+      <End Role="tb_DATPHONGSP" EntitySet="tb_DATPHONGSP" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PHONG_LOAIPHONG" Association="Self.fk_PHONG_LOAIPHONG">
+      <End Role="tb_LOAIPHONG" EntitySet="tb_LOAIPHONG" />
+      <End Role="tb_PHONG" EntitySet="tb_PHONG" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tang_Phong" Association="Self.fk_tang_Phong">
+      <End Role="tb_TANGLAU" EntitySet="tb_TANGLAU" />
+      <End Role="tb_PHONG" EntitySet="tb_PHONG" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
